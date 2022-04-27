@@ -19,6 +19,10 @@ const counterReducer = (state = initCounterState, action) => {
             return {
                 counter: state.counter - 1
             };
+        case 'INCREMENT_BY':
+            return {
+                counter: state.counter + action.amount
+            };
         default:
             return state;
     }
