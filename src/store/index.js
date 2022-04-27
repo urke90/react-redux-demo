@@ -1,7 +1,12 @@
 import { createStore } from 'redux';
 
 const initCounterState = {
-    counter: 0
+    counter: 0,
+    bla: {
+        n: 0,
+        l: 1,
+        g: 2
+    }
 };
 
 const counterReducer = (state = initCounterState, action) => {
@@ -15,7 +20,7 @@ const counterReducer = (state = initCounterState, action) => {
                 counter: state.counter - 1
             };
         default:
-            throw new Error('NO ACTION WITH SUCH TYPE');
+            return state;
     }
 };
 
