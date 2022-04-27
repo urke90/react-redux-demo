@@ -9,15 +9,27 @@ const counterSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
-        increment: (state) => state.counter + 1,
-        decrement: (state) => state.counter - 1,
-        incrementBy: (state, action) => state.counter + action.payload,
-        toggleCounter: (state) => !state.showCounter
+        increment(state) {
+            state.counter = state.counter + 1;
+        },
+        decrement(state) {
+            state.counter = state.counter - 1;
+        },
+        incrementBy(state, action) {
+            state.counter = state.counter + action.payload;
+        },
+        toggleCounter: (state) => {
+            state.showCounter = !state.showCounter;
+        }
     }
 });
 
+// console.log('counterSlice', counterSlice);
+
+export const counterActions = counterSlice.actions;
+
 export const store = configureStore({
     reducer: {
-        counter: counterSlice.reducer
+        counterReducer: counterSlice.reducer
     }
 });
