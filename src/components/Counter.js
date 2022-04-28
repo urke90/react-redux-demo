@@ -1,7 +1,8 @@
-import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { counterActions } from '../store/toolkit';
+// import { counterActions } from '../store/toolkit';\
+
+import { counterActions } from '../store/counter';
 
 import classes from './Counter.module.css';
 
@@ -11,7 +12,7 @@ const Counter = () => {
     const dispatch = useDispatch();
 
     const counter = useSelector((state) => {
-        // console.log('state', state);
+        console.log('state', state);
         return state.counterReducer.counter;
     });
 
@@ -26,8 +27,7 @@ const Counter = () => {
         dispatch(counterActions.increment());
     };
     const decrementCounterHandler = () => dispatch(counterActions.decrement());
-    const incrementByHandler = () =>
-        dispatch({ type: 'INCREMENT_BY', amount: 5 });
+    const incrementByHandler = () => dispatch(counterActions.incrementBy(5));
 
     const toggleCounterHandler = () => dispatch(counterActions.toggleCounter());
 

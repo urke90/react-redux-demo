@@ -1,24 +1,26 @@
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Counter from './components/Counter';
+import Auth from './components/Auth';
+import Header from './components/Header';
+import UserProfile from './components/UserProfile';
+
 // import { store } from './store';
-import { store } from './store/toolkit';
+// import { store } from './store/toolkit';
 
 function App() {
+    const isAuthenticated = useSelector(
+        (state) => state.authReducer.isAuthenticated
+    );
+
     return (
-        <Provider store={store}>
-            <Counter />
-        </Provider>
+        <>
+            <Header />
+            {!isAuthenticated && <Auth />}
+            {isAuthenticated && <UserProfile />}
+            {isAuthenticated && <Counter />}
+        </>
     );
 }
 
 export default App;
-
-/**
- * WE SHOULD:
- * 1. Create store
- * 2. create reducer for counter
- * 3. DO NOT SUBSCRIBE
- * 4. create INCREMENT action
- * 5. create DECREMENT action
- */
